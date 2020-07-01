@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+
+    string message = Convert.ToString(TempData["Message"]);
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<span>1 - Productos y categorias</span>
+<li>
+    <a href="@Url.Action("Index", "Products")">Products</a>
+</li>
+
+<span>2 - Productos y sucursales</span>
+<li>
+    <a href="@Url.Action("Index", "Branch")">Branch_Products</a>
+</li>
+
+<span>3 - Pedidos</span>
+<li>
+    <a href="@Url.Action("Index", "Order")">Ordenes</a>
+</li>
+
+<span>4 - Pedidos cancelados</span>
+<li>
+    <a href="@Url.Action("CanceledOrder", "Order")">Cancelados</a>
+</li>
+
+<span>5 - Estadisticas</span>
+<li>
+    <a href="@Url.Action("Index", "Stats")">Estadisticas</a>
+</li>
+
+<span>6 - Dias</span>
+<li>
+    <a href="@Url.Action("DayUserStats", "Stats")">Dias</a>
+</li>
+
+
+<span>7 - Incomes</span>
+<li>
+    <a href="@Url.Action("Index", "Income")">Incomes</a>
+</li>
+
+
+
+
+
+<br />
+
+
+<br />
+<span>@message</span>

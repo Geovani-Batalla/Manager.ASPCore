@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dropbox.Api" Version="4.9.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.ASPCore\Data.ASPCore.csproj" />
+    <ProjectReference Include="..\Entities.ASPCore\Entities.ASPCore.csproj" />
+  </ItemGroup>
+
+</Project>
