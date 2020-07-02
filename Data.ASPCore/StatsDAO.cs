@@ -21,7 +21,7 @@ namespace Data.ASPCore
                     SqlCommand cmd = connection.CreateCommand();
                     connection.Open();
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = ""+NameProcedure+"";
+                    cmd.CommandText = "" + NameProcedure + "";
                     cmd.Parameters.AddWithValue("@Id", stats.Id);
                     cmd.Parameters.AddWithValue("@UserId", stats.UserId);
                     cmd.Parameters.AddWithValue("@Month", stats.Month);

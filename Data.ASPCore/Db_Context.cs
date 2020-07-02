@@ -27,6 +27,7 @@ namespace Data.ASPCore
         public DbSet<UserAccountPayments> UserAccountPayments { get; set; }
         public DbSet<FriendRelashionship> FriendRelashionship { get; set; }
         public DbSet<InvitedFriendData> InvitedFriendData { get; set; }
+        public DbSet<Order> Order { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
