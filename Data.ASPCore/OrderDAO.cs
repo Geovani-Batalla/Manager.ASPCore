@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Entities.ASPCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -32,5 +33,23 @@ namespace Data.ASPCore
             }
             return result;
         }
+
+        public async Task<Order> AddAsync(Order order)
+        {
+            try
+            {
+                using (Db_Context db = new Db_Context())
+                {
+                    db.Order.Add(order);
+                    await db.SaveChangesAsync();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            return order;
+        }
+
     }
 }
