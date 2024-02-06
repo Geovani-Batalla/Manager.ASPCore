@@ -82,9 +82,7 @@ namespace Business.ASPCore.Friends
                 {
                     return result;
                 }
-
-                DropBoxProcess dropBoxProcess = new DropBoxProcess();
-                result.DropBoxFiles = dropBoxProcess.GetFiles(UserLogedId).Result.DropBoxFiles;
+                result.DropBoxFiles = new DropBoxProcess().GetFiles(UserLogedId).Result.DropBoxFiles;
             }
             catch (Exception ex)
             {
@@ -111,9 +109,7 @@ namespace Business.ASPCore.Friends
                 {
                     return result;
                 }
-
-                DropBoxProcess dropBoxProcess = new DropBoxProcess();
-                DropBoxResult dropBoxResult = await dropBoxProcess.DownloadFile(FilePath);
+                DropBoxResult dropBoxResult = await new DropBoxProcess().DownloadFile(FilePath);
                 result.Image_Name = dropBoxResult.Image_Name;
                 result.Image = dropBoxResult.Image;
             }
@@ -137,9 +133,7 @@ namespace Business.ASPCore.Friends
             };
             try
             {
-                FriendsDAO friendsDAO = new FriendsDAO();
-                result.FriendRelashionships = friendsDAO.GetFriends(companyId);
-
+                result.FriendRelashionships = new FriendsDAO().GetFriends(companyId);
             }
             catch (Exception ex)
             {
@@ -149,6 +143,5 @@ namespace Business.ASPCore.Friends
             }
             return result;
         }
-
     }
 }
