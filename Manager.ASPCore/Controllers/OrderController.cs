@@ -13,8 +13,7 @@ namespace Manager.ASPCore.Controllers
     {
         public IActionResult Index()
         {
-            OrderProcess orderProcess = new OrderProcess();
-            OrderResult result = orderProcess.Get_Orders(Userloged.Id);
+            OrderResult result = new OrderProcess().Get_Orders(Userloged.Id);
             return View(result);
         }
 
@@ -29,8 +28,7 @@ namespace Manager.ASPCore.Controllers
             int.TryParse(collection["TotalOrders"].ToString(), out int TotalOrders);
             List<Order> Orders =  GetTotalOrders(collection, TotalOrders);
 
-            OrderProcess orderProcess = new OrderProcess();
-            OrderResult result = await orderProcess.AddOrders(Orders);          
+            OrderResult result = await new OrderProcess().AddOrders(Orders);          
             return View(result);
         }
 
