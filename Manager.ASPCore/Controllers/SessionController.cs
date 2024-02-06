@@ -17,9 +17,10 @@ namespace Manager.ASPCore.Controllers
         public IActionResult Session()
         {
             UserResult result = new UserResult();
-            HttpContext.Session.Remove("phone");
+            HttpContext.Session.Remove("Phone");
             HttpContext.Session.Remove("Id");
-            HttpContext.Session.Remove("idrol");         
+            HttpContext.Session.Remove("Rol_Id");   
+            HttpContext.Session.Remove("Company_Id");    
             return View(result);
         }
         
