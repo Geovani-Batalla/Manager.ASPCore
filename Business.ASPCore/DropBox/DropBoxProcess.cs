@@ -61,7 +61,6 @@ namespace Business.ASPCore.DropBox
                         dropBoxFile.IsShowable = false;
                     }
                     Files.Add(dropBoxFile);
-
                 }
                 result.DropBoxFiles = Files;
             }
@@ -99,6 +98,25 @@ namespace Business.ASPCore.DropBox
                 result.ResultType = ResultType.Error;
             }
             return result;
+        }
+
+        public async static void Add_Voucher(string Filename, MemoryStream Mem)
+        {
+            DropBoxResult result = new DropBoxResult();
+            try
+            {
+                Mem.Position = 0;
+                result.dbpath = "/PaymentsVouchers";
+                var folderarg = new CreateFolderArg(result.dbpath);
+                Dropbox.Api.DropboxClient dbx = DropBoxProcess.Connect();
+                var addlogo = await dbx.Files.UploadAsync(result.dbpath + "/" + Filename, WriteMode.Overwrite.Instance, body: Mem);
+            }
+            catch (Exception ex)
+            {
+                result.IsValid = false;
+                result.Message = ex.Message;
+                result.ResultType = ResultType.Error;
+            }
         }
     }
 }
