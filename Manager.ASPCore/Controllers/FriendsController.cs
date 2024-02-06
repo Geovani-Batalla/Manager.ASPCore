@@ -13,8 +13,7 @@ namespace Manager.ASPCore.Controllers
     {
         public IActionResult Index()
         {
-            FriendsProcess friendsProcess = new FriendsProcess();
-            FriendsResult result = friendsProcess.GetFriends(Userloged.Id);
+            FriendsResult result = new FriendsProcess().GetFriends(Userloged.Id);
             return View(result);
         }
 
@@ -26,8 +25,7 @@ namespace Manager.ASPCore.Controllers
             string Phone_1 = collection["Phone_1"].ToString();
             string Phone_2 = collection["Phone_2"].ToString();
 
-            FriendsProcess friendsProcess = new FriendsProcess();
-            FriendsResult result = await friendsProcess.Add(FullName, Phone_1, Phone_2, Email, Userloged.Id, Userloged.Name, 12);
+            FriendsResult result = await new FriendsProcess().Add(FullName, Phone_1, Phone_2, Email, Userloged.Id, Userloged.Name, 12);
             if (!result.IsValid)
             {
                 TempData["Message"] = result.Message;
@@ -42,8 +40,7 @@ namespace Manager.ASPCore.Controllers
             JsonResponse response = new JsonResponse();
             try
             {
-                FriendsProcess friendsProcess = new FriendsProcess();
-                FriendsResult result = await friendsProcess.GetFiles(Userloged.Id);
+                FriendsResult result = await new FriendsProcess().GetFiles(Userloged.Id);
                 if (!result.IsValid)
                 {
                     response.Message = response.Message;
@@ -61,15 +58,11 @@ namespace Manager.ASPCore.Controllers
             return Json(response);
         }
 
-
         [HttpGet]
         public async virtual Task<ActionResult> Download(string file)
         {
-            FriendsProcess friendsProcess = new FriendsProcess();
-            FriendsResult result = await friendsProcess.DownloadFile(file);
-            return File(result.Image, System.Net.Mime.MediaTypeNames.Application.Octet, result.Image_Name);
-
-            
+            FriendsResult result = await new FriendsProcess().DownloadFile(file);
+            return File(result.Image, System.Net.Mime.MediaTypeNames.Application.Octet, result.Image_Name);            
         }
     }
 }
