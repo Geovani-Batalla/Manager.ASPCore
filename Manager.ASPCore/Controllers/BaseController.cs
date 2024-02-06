@@ -22,8 +22,7 @@ namespace Manager.ASPCore.Controllers
 
         private User GetUser(string PhoneNumber)
         {
-            UserProcess UserProcess = new UserProcess();
-            UserResult result = UserProcess.Get(PhoneNumber);
+            UserResult result = new UserProcess().Get(PhoneNumber);
             if (result.IsValid)
             {
                 return result.User;
