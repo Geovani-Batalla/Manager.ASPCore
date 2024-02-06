@@ -24,8 +24,7 @@ namespace Manager.ASPCore.Controllers
             decimal TotalSales = Convert.ToDecimal(collection["TotalSales"]);
             decimal TotalExpenses = Convert.ToDecimal(collection["TotalExpenses"]);
 
-            StatsProcess statsProcess = new StatsProcess();
-            StatsResult result = statsProcess.Add(Userloged.Id, TotalSales, TotalOrders, TotalProducts,
+            StatsResult result = new StatsProcess().Add(Userloged.Id, TotalSales, TotalOrders, TotalProducts,
                 TotalExpenses);
             if (!result.IsValid)
             {
