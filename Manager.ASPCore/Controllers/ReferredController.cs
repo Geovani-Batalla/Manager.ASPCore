@@ -12,8 +12,7 @@ namespace Manager.ASPCore.Controllers
     {
         public IActionResult Index()
         {
-            ReferredUserProcess referredUserProcess = new ReferredUserProcess();
-            ReferredUserResult result = referredUserProcess.GetReferralsByUser(Userloged.Id);
+            ReferredUserResult result = new ReferredUserProcess().GetReferralsByUser(Userloged.Id);
             return View(result);
         }
     
@@ -29,8 +28,7 @@ namespace Manager.ASPCore.Controllers
             int.TryParse(collection["UserSource"].ToString(), out int UserSource);
             int.TryParse(collection["Country"].ToString(), out int Country);
 
-            ReferredUserProcess referredUserProcess = new ReferredUserProcess();
-            ReferredUserResult result = await referredUserProcess.Add(Name, PhoneNumber, Email, CompanySize, WebPage, UserSource,
+            ReferredUserResult result = await new ReferredUserProcess().Add(Name, PhoneNumber, Email, CompanySize, WebPage, UserSource,
                 Country, Userloged.Id);
             if (!result.IsValid)
             {
